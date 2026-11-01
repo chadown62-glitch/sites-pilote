@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+.venv/
+node_modules/
+out/
+private/
+.env
+.env.*
+*.pem
+*.key
+playwright-report/
+test-results/

@@ -34,3 +34,15 @@ HTML/CSS/JS pur, aucune dépendance. Bannière « Démonstration — entreprise 
 3. Décider du traitement du formulaire (hébergeur, base légale, information des personnes, sécurité) avant de l'activer.
 4. Fournir des images dont les droits sont maîtrisés ; retirer `noindex` et la bannière si et seulement si le site devient réel.
 5. Choisir hébergeur et domaine, HTTPS, puis refaire les contrôles (accessibilité, performance, navigateurs).
+
+
+## Addendum de vérification indépendante — 1 novembre 2026
+Le rapport ci-dessus décrit la première exécution de Claude. Lors de sa relecture,
+le contrôleur original échoue sur le mot « secrets » dans README.md et dans ce
+rapport, donc son succès final n'est pas reproductible sur ce commit d'origine.
+Le contrôleur est corrigé et les résultats nouveaux sont dans PREPARATION_REPORT.md.
+Les tests navigateur initiaux restent des résultats rapportés par Claude, non
+réexécutés dans l'environnement de relecture faute de Chromium installé.
+Les pages ont aussi été régénérées pour retirer les styles inline et préciser que
+l'hébergeur éventuel peut traiter des journaux techniques. Refaire les tests
+navigateur sur cette version avant toute utilisation réelle.

@@ -50,7 +50,7 @@ pages["index.html"] = ("Accueil","Atelier Démo, entreprise fictive de rénovati
 <h1>Rénovation intérieure : un site vitrine de démonstration</h1>
 <p class="lead">Atelier Démo est une entreprise <strong>imaginaire</strong>. Ce site sert uniquement à tester la production d'un site vitrine statique.</p>
 {CTA}</div></section>
-<div class="wrap" style="padding-top:2rem;padding-bottom:3rem">
+<div class="wrap content-spaced">
 <h2>Ce que présente ce site</h2>
 <div class="grid">
 <div class="card"><h3>Peinture</h3><p>Exemple de page dédiée à la peinture intérieure.</p><a href="peinture.html">Voir la page</a></div>
@@ -111,11 +111,11 @@ pages["contact.html"] = ("Contact","Page contact de démonstration : formulaire 
 <div class="notice todo"><strong>Formulaire de démonstration désactivé.</strong> Rien n'est envoyé, enregistré ni traité. Aucune adresse ni aucun téléphone n'est publié car l'entreprise est fictive.</div>
 <form id="demo-form" action="#" aria-describedby="demo-info">
 <p id="demo-info">Les champs sont désactivés : ce formulaire illustre seulement la mise en page.</p>
-<fieldset disabled style="border:0;padding:0;margin:0">
+<fieldset disabled class="demo-fields">
 <label for="nom">Nom</label><input id="nom" type="text" autocomplete="off">
 <label for="email">Adresse e-mail</label><input id="email" type="email" autocomplete="off">
 <label for="msg">Message</label><textarea id="msg" rows="5"></textarea>
-<p style="margin-top:1rem"><button class="btn" type="submit" disabled>Envoi indisponible (démonstration)</button></p>
+<p class="form-actions"><button class="btn" type="submit" disabled>Envoi indisponible (démonstration)</button></p>
 </fieldset></form>''')
 
 pages["mentions-legales.html"] = ("Mentions légales (trame)","Trame de mentions légales à compléter et vérifier avant publication.",
@@ -132,10 +132,11 @@ pages["confidentialite.html"] = ("Confidentialité (trame)","Trame de politique 
  '''<h1>Politique de confidentialité — trame</h1>
 <div class="notice todo"><strong>À compléter et vérifier avant publication.</strong> Cette trame n'a aucune valeur juridique.</div>
 <h2>Situation de ce site de démonstration</h2>
-<p>Ce site ne charge aucun contenu externe, n'utilise aucun traceur ni cookie et ne collecte aucune donnée : son formulaire est désactivé.</p>
+<p>Le code de cette démonstration ne charge aucun contenu externe, ne met en place aucun traceur ni cookie et son formulaire est désactivé. En consultation locale, ce formulaire ne transmet rien. Une consultation via un serveur peut générer des journaux techniques : leur contenu, leurs destinataires et leur durée de conservation devront être vérifiés selon l’hébergement retenu.</p>
 <h2>Si un traitement de données était ajouté</h2>
 <p>[Responsable du traitement, finalités, base légale, durées de conservation, destinataires, droits des personnes, contact : à compléter]</p>''')
 
 for f,(t,d,b,*h) in pages.items():
     (ROOT/f).write_text(page(f,t,d,b,bool(h and h[0])), encoding="utf-8")
 print(len(pages),"pages générées")
+
