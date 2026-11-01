@@ -29,6 +29,7 @@ class Document(HTMLParser):
         super().__init__(convert_charrefs=True)
         self.urls, self.ids, self.duplicates, self.errors = [], set(), set(), []
         self.h1, self.main, self.title, self.lang, self.noindex = 0, 0, 0, None, False
+        self.forms, self.form_depth, self.fieldsets = [], 0, []
         self.feed(text)
 
     def handle_starttag(self, tag, attrs):
@@ -42,6 +43,22 @@ class Document(HTMLParser):
             self.ids.add(attrs['id'])
         if tag == 'meta' and attrs.get('name') == 'robots':
             self.noindex = 'noindex' in attrs.get('content', '')
+        if tag == 'meta' and attrs.get('http-equiv', '').lower() == 'refresh':
+            self.errors.append('redirection meta exclue du pilote')
+        if tag == 'script' and not attrs.get('src'):
+            self.errors.append('script inline exclu du pilote')
+        if tag == 'style': self.errors.append('style embarqué exclu du pilote')
+        if tag == 'form':
+            self.forms.append(attrs)
+            self.form_depth += 1
+        if tag == 'fieldset': self.fieldsets.append('disabled' in attrs)
+        # Les contrôles dans le premier legend peuvent être actifs même si le
+        # fieldset est disabled : cette construction est exclue du pilote.
+        if tag == 'legend' and self.form_depth and any(self.fieldsets):
+            self.errors.append('legend de formulaire désactivé à vérifier')
+        if tag in ('input', 'select', 'textarea', 'button') and self.form_depth:
+            if 'disabled' not in attrs and not any(self.fieldsets):
+                self.errors.append('contrôle de formulaire actif')
         if tag == 'img' and 'alt' not in attrs: self.errors.append('image sans alt')
         if tag in ('iframe', 'object', 'embed', 'base'): self.errors.append('élément exclu du pilote : ' + tag)
         if any(k.lower().startswith('on') for k in attrs): self.errors.append('gestionnaire JS inline')
@@ -49,6 +66,10 @@ class Document(HTMLParser):
         if 'srcset' in attrs: self.errors.append('srcset non pris en charge par ce contrôle')
         for key in ('href', 'src', 'action', 'poster', 'data'):
             if attrs.get(key): self.urls.append(attrs[key])
+
+    def handle_endtag(self, tag):
+        if tag == 'fieldset' and self.fieldsets: self.fieldsets.pop()
+        if tag == 'form': self.form_depth = max(0, self.form_depth - 1)
 
 def check_site(root=ROOT):
     root = Path(root).resolve()
@@ -70,6 +91,11 @@ def check_site(root=ROOT):
                 errors.append(name + ': signalement fictif/noindex absent')
             errors.extend(name + ': ' + e for e in d.errors)
             if d.duplicates: errors.append(name + ': identifiants dupliqués')
+            if name == 'contact.html':
+                if len(d.forms) != 1 or d.forms[0].get('id') != 'demo-form' or d.forms[0].get('action') != '#':
+                    errors.append(name + ': seul le formulaire fictif attendu est autorisé')
+            elif d.forms:
+                errors.append(name + ': formulaire inattendu')
         elif name.endswith('.css'):
             if re.search(r'@import\b', text, re.I): errors.append(name + ': import CSS exclu')
             for url in re.findall(r'url\(\s*[\"\']?([^\s)\"\']+)', text, re.I):
@@ -86,6 +112,9 @@ def check_site(root=ROOT):
             target = (root / unquote(u.path)).resolve() if u.path else root / name
             if not target.is_relative_to(root) or not target.is_file():
                 errors.append(name + ': lien absent ou sortant du dossier')
+                continue
+            if target.relative_to(root).as_posix() not in SITE_FILES:
+                errors.append(name + ': lien vers un fichier hors paquet')
                 continue
             if u.fragment and (target.name not in docs or unquote(u.fragment) not in docs[target.name].ids):
                 errors.append(name + ': ancre absente')

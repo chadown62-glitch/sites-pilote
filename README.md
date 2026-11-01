@@ -55,3 +55,19 @@ Une remise de sources maintenables pour un vrai projet a un périmètre distinct
 
 La restauration du ZIP et une modification ciblée du générateur sont testées en
 répertoire temporaire. Consulter PREPARATION_REPORT.md pour les résultats et limites.
+
+## Tests du relais manuel (simulation locale)
+Le précontrôle distingue payment_mode=manual (procédure manuelle authentifiée)
+de payment_mode=automated (adaptateur authentifié). Aucun de ces réglages
+n'active une action réelle. Les preuves et configurations restent hors dépôt.
+
+Le module tools/payment_handoff.py produit uniquement un plan interne privé,
+avec dédoublonnage à partir de clés déjà enregistrées fournies par l'appelant.
+Il ne lit aucun mail, n'envoie aucune notification, ne valide aucune transaction,
+ne stocke pas de dossier et n'autorise jamais une livraison. Un historique
+indisponible bloque le plan ; il ne doit pas être remplacé par une liste vide.
+La persistance privée et la liaison aux services restent à implémenter/tester.
+
+Les tests de régression couvrent aussi l'historique de premier contact incohérent,
+les formulaires ajoutés/actifs, scripts/styles embarqués, redirections meta
+et liens vers des fichiers internes absents du paquet de site.

@@ -1,6 +1,4 @@
-import copy
 from datetime import datetime, timedelta, timezone
-import json
 from pathlib import Path
 import shutil
 import sys
@@ -24,7 +22,10 @@ class DraftRules(unittest.TestCase):
                       has_reply=False, followup_draft_or_sent=False, first_sent_confirmed=True,
                       first_sent_at=(self.now - timedelta(days=7)).isoformat())
         self.c = dict(gmail_checked=True, suppression_checked=True, unsent_initial_drafts=9)
-    def initial(self): return eligible_draft(self.p, self.c, 'initial', self.now)
+    def initial(self):
+        # Un premier contact n'a aucun envoi antérieur, contrairement au cas relance.
+        prospect = dict(self.p, first_sent_confirmed=False, first_sent_at=None)
+        return eligible_draft(prospect, self.c, 'initial', self.now)
     def followup(self): return eligible_draft(self.p, self.c, 'followup', self.now)
     def test_cap_boundary(self):
         self.assertEqual(self.initial(), [])

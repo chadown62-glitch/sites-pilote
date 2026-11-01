@@ -22,6 +22,9 @@ def eligible_draft(prospect, context, kind, now):
         count = context.get('unsent_initial_drafts')
         if type(count) is not int or not 0 <= count < 10: reasons.append('plafond des 10 brouillons ou compteur inconnu')
         if prospect.get('already_drafted_or_contacted') is not False: reasons.append('doublon ou historique inconnu')
+        if prospect.get('has_reply') is not False: reasons.append('réponse présente ou historique inconnu')
+        if prospect.get('first_sent_confirmed') is not False or prospect.get('first_sent_at') is not None:
+            reasons.append('premier envoi déjà constaté ou historique incohérent/inconnu')
     elif kind == 'followup':
         if prospect.get('has_reply') is not False: reasons.append('réponse présente ou inconnue')
         if prospect.get('followup_draft_or_sent') is not False: reasons.append('relance déjà préparée/envoyée ou inconnue')

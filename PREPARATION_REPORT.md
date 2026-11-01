@@ -60,3 +60,33 @@ les faits exacts d'un projet réel et une vérification adaptée. Tout aperçu o
 hébergement réel doit être autorisé, isolé, testé et configuré séparément.
 Un résultat non exécuté ne devient pas réussi en modifiant un fichier de statut.
 Les tests synthétiques ne sont pas un parcours de vente ou livraison réel.
+
+
+## Seconde passe de tests et corrections — 1 novembre 2026
+Référence de départ : 9fa95d01a8ae159cd94510aa106c0ead696c8776.
+
+Les 18 tests existants passent avant modification. Parmi les 12 premiers tests
+de régression ajoutés, 11 échouent sur l'ancienne version ; le cas du changement
+d'heure passe déjà et reste couvert. Les corrections suivantes sont vérifiées :
+- un premier contact est bloqué en cas d'envoi antérieur, de réponse ou
+  d'historique inconnu/contradictoire, même avec un indicateur de doublon faux ;
+- les contrôles de paiement manuel et automatisé sont distincts, avec une
+  procédure manuelle authentifiée exigée pour le premier ;
+- les scripts et styles embarqués, redirections meta, formulaires supplémentaires
+  ou actifs, contrôles dans legend et liens hors paquet sont rejetés ;
+- les configurations mal formées restent bloquées sans faire planter le précontrôle.
+
+Résultat final : **40 tests Python réussis**, contrôles statiques réussis, paquet
+de 11 fichiers généré ; extraction/restauration et révision ciblée vérifiées.
+Les 9 contrastes mesurés passent toujours le seuil testé, de 5,49:1 à 15,30:1.
+
+Le relais de paiement est testé par un module pur, sur dossiers fictifs : plan
+privé séparé du client, dédoublonnage si historique fourni, blocage si incomplet
+ou sans historique, aucune livraison sur déclaration de paiement. Ce test n'est
+PAS un test des notifications réelles, d'un paiement ou d'une chaîne interservices.
+Le module ne fournit ni stockage durable, ni envoi, ni authentification de paiement.
+
+Test navigateur à nouveau tenté : **NON VÉRIFIÉ**, code 2, Chromium absent.
+Aucun téléchargement, achat, paiement, publication ou contact externe de test.
+La suite réussie ne valide ni la conformité juridique ni la sécurité exhaustive.
+Les observations de comptes et la configuration réelle demeurent hors dépôt public.
