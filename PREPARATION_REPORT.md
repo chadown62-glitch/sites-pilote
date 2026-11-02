@@ -90,3 +90,9 @@ Test navigateur à nouveau tenté : **NON VÉRIFIÉ**, code 2, Chromium absent.
 Aucun téléchargement, achat, paiement, publication ou contact externe de test.
 La suite réussie ne valide ni la conformité juridique ni la sécurité exhaustive.
 Les observations de comptes et la configuration réelle demeurent hors dépôt public.
+
+
+## Test navigateur — 2 novembre 2026
+`node tools/browser-check.cjs` : réussi (Chromium préinstallé, 9 pages, 320/375/1280 px,
+0 erreur JS, 0 requête externe, clavier, formulaire désactivé, sans JS). Remplace le
+statut NON VÉRIFIÉ précédent, limité à Chromium. Autres navigateurs : NON VÉRIFIÉ.
