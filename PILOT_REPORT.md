@@ -46,3 +46,18 @@ réexécutés dans l'environnement de relecture faute de Chromium installé.
 Les pages ont aussi été régénérées pour retirer les styles inline et préciser que
 l'hébergeur éventuel peut traiter des journaux techniques. Refaire les tests
 navigateur sur cette version avant toute utilisation réelle.
+
+
+## Reprise — 4 novembre 2026 (test navigateur sur la version actuelle)
+Seul point incomplet : le test navigateur, resté NON VÉRIFIÉ (Chromium absent
+lors des passes précédentes). Chromium/Playwright étant disponible, il a été exécuté
+sur la version régénérée (site non reconstruit, aucun fichier du site modifié).
+Constaté, 9 pages × viewports 375 px et 1280 px (script hors dépôt) :
+- 0 erreur JS/console, 0 requête externe, 0 débordement horizontal ;
+- bannière « Démonstration — entreprise fictive » présente partout ;
+- premier focus clavier = lien d'évitement « Aller au contenu » ;
+- contact : champs et bouton correspondent à `:disabled` (fieldset désactivé) ;
+- menu mobile : ouverture à Entrée (`aria-expanded=true`), fermeture à Échap (`false`).
+Avant ce test : `tools/check.py` OK et 40 tests unittest OK.
+Toujours NON VÉRIFIÉ : Firefox/Safari, appareils physiques, lecteur d'écran,
+validateur W3C, revue juridique. Aucune conformité ni sécurité absolue affirmée.
