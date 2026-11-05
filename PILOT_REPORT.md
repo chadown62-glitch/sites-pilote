@@ -46,3 +46,13 @@ réexécutés dans l'environnement de relecture faute de Chromium installé.
 Les pages ont aussi été régénérées pour retirer les styles inline et préciser que
 l'hébergeur éventuel peut traiter des journaux techniques. Refaire les tests
 navigateur sur cette version avant toute utilisation réelle.
+
+
+## Reprise — tests navigateur sur la version régénérée (5 novembre 2026)
+Seul point resté incomplet : les tests navigateur n'avaient pas été refaits sur la version régénérée.
+Chromium (Playwright) étant disponible, ils ont été exécutés sur les 9 pages, à 375 px et 1280 px :
+- **Constaté** : 0 erreur JS/console, 0 requête externe, 0 débordement horizontal, bannière « Démonstration — entreprise fictive » présente, premier focus clavier = lien d'évitement.
+- **Constaté** : sur contact.html, fieldset et bouton d'envoi portent `disabled` (lecture du source).
+- `python3 tools/check.py` : OK ; `python3 -m unittest discover -s tests` : 40 tests OK.
+- **NON VÉRIFIÉ** (inchangé) : lecteur d'écran, Firefox/Safari, appareils physiques, validateur W3C, revue juridique.
+Aucune modification du site : rien d'autre à reconstruire.

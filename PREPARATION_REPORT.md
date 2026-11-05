@@ -90,3 +90,7 @@ Test navigateur à nouveau tenté : **NON VÉRIFIÉ**, code 2, Chromium absent.
 Aucun téléchargement, achat, paiement, publication ou contact externe de test.
 La suite réussie ne valide ni la conformité juridique ni la sécurité exhaustive.
 Les observations de comptes et la configuration réelle demeurent hors dépôt public.
+
+
+## Reprise du 5 novembre 2026
+Tests navigateur Chromium enfin exécutés (9 pages, 375/1280 px) : 0 erreur, 0 requête externe, 0 débordement. Détails dans PILOT_REPORT.md. Autres contrôles non exécutés : toujours NON VÉRIFIÉS.
