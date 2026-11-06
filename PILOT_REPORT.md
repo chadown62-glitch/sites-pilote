@@ -46,3 +46,14 @@ réexécutés dans l'environnement de relecture faute de Chromium installé.
 Les pages ont aussi été régénérées pour retirer les styles inline et préciser que
 l'hébergeur éventuel peut traiter des journaux techniques. Refaire les tests
 navigateur sur cette version avant toute utilisation réelle.
+
+
+## Addendum de reprise — 6 novembre 2026
+Seul point incomplet : tests navigateur à refaire sur la version régénérée.
+Constaté (Chromium headless, Playwright, fichiers locaux, 9 pages × 375 px et 1280 px) :
+0 erreur JS/console, 0 requête externe, 0 débordement horizontal, premier focus clavier
+sur le lien d'évitement ; sur contact.html, champs (fieldset désactivé) et bouton d'envoi
+désactivés (seul le bouton « Menu » de navigation est actif, hors formulaire).
+Aussi constaté : `python3 tools/check.py` OK ; 40 tests unittest OK.
+NON VÉRIFIÉ : lecteur d'écran, Firefox/Safari, appareils réels, validateur W3C, contrastes
+hors mesures déjà consignées, aucune revue juridique. Site non reconstruit.
