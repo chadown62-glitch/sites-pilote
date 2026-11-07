@@ -46,3 +46,13 @@ réexécutés dans l'environnement de relecture faute de Chromium installé.
 Les pages ont aussi été régénérées pour retirer les styles inline et préciser que
 l'hébergeur éventuel peut traiter des journaux techniques. Refaire les tests
 navigateur sur cette version avant toute utilisation réelle.
+
+
+## Reprise du 7 novembre 2026 — tests navigateur sur la version régénérée
+Seul point incomplet : les tests navigateur n'avaient pas été refaits après la régénération des pages. Site non reconstruit.
+Constaté (Chromium headless Playwright, fichiers locaux, 9 pages × 375 px et 1280 px) :
+- 0 erreur JS/console, 0 requête externe, 0 débordement horizontal, bannière « Démonstration — entreprise fictive » présente partout.
+- Premier Tab sur l'accueil : lien d'évitement « Aller au contenu ».
+- Contact : champs désactivés via `<fieldset disabled>` (hérité par les champs) et bouton `disabled` — lecture du source ; le contrôle `disabled` direct de chaque champ n'est pas posé, seul l'héritage du fieldset s'applique.
+- `tools/check.py` OK ; 40 tests unittest OK.
+Non revérifié cette fois : menu mobile (Entrée/Échap) sur la version régénérée, lecteur d'écran, Firefox/Safari, validateur W3C, revue juridique : NON VÉRIFIÉ.
