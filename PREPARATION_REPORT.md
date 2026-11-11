@@ -90,3 +90,24 @@ Test navigateur à nouveau tenté : **NON VÉRIFIÉ**, code 2, Chromium absent.
 Aucun téléchargement, achat, paiement, publication ou contact externe de test.
 La suite réussie ne valide ni la conformité juridique ni la sécurité exhaustive.
 Les observations de comptes et la configuration réelle demeurent hors dépôt public.
+
+
+## Troisième passe — test navigateur — 11 novembre 2026
+Référence : 611829fd2a67c11b395036493a0a51a3d23b78fc. Seul point incomplet repris : le test navigateur, jusqu'ici
+NON VÉRIFIÉ faute de Chromium. Le site n'a pas été reconstruit ni modifié ;
+`python3 tools/build.py` régénère des pages identiques (aucune différence git).
+
+| Contrôle | Résultat | Limite |
+|---|---|---|
+| Contrôleur statique `tools/check.py` | RÉUSSI, 9 pages | Motifs ciblés |
+| 40 tests Python | RÉUSSIS | Données fictives |
+| `node tools/browser-check.cjs` | RÉUSSI, code 0 | Chromium 153 / Playwright 1.63 préinstallés dans l'environnement ; rien téléchargé |
+| 9 pages × 320, 375, 1280 px | statut 200, un h1, bannière visible, aucun débordement horizontal | Chromium seulement, rendu non inspecté visuellement |
+| Erreurs JS / console | 0 | Sur ces chargements de pages uniquement |
+| Requêtes externes | 0 (interception de toute origine non locale) | Serveur local HTTP, pas HTTPS |
+| Clavier (375 px) | lien d'évitement au premier Tab ; menu ouvert par Entrée, fermé par Échap, aria-expanded à jour | Pas d'ordre de tabulation complet ni de focus visible mesuré |
+| Formulaire contact | 0 champ ou bouton d'envoi actif | — |
+| Sans JavaScript | menu visible, 7 liens | — |
+
+Restent NON VÉRIFIÉS : lecteur d'écran, Firefox/Safari/appareils physiques,
+validation HTML W3C, zoom 200 %, conformité juridique et sécurité exhaustive.
