@@ -46,3 +46,12 @@ réexécutés dans l'environnement de relecture faute de Chromium installé.
 Les pages ont aussi été régénérées pour retirer les styles inline et préciser que
 l'hébergeur éventuel peut traiter des journaux techniques. Refaire les tests
 navigateur sur cette version avant toute utilisation réelle.
+
+
+## Mise à jour — 15 novembre 2026
+Le test navigateur `node tools/browser-check.cjs` a été réexécuté sur la version
+corrigée, Chromium étant disponible : **réussi** (9 pages × 320/375/1280 px, 0 erreur
+JS, 0 requête externe, aucun débordement, clavier, formulaire désactivé, navigation
+sans JS). Détails et limites restantes dans PREPARATION_REPORT.md. Firefox/Safari,
+lecteur d'écran, validation W3C et revue juridique restent non effectués.
+Les conditions avant publication réelle ci-dessus sont inchangées.

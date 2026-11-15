@@ -90,3 +90,26 @@ Test navigateur à nouveau tenté : **NON VÉRIFIÉ**, code 2, Chromium absent.
 Aucun téléchargement, achat, paiement, publication ou contact externe de test.
 La suite réussie ne valide ni la conformité juridique ni la sécurité exhaustive.
 Les observations de comptes et la configuration réelle demeurent hors dépôt public.
+
+
+## Passe planifiée — 15 novembre 2026
+Référence de départ : 611829fd2a67c11b395036493a0a51a3d23b78fc. Site non reconstruit : seul point incomplet
+traité = test navigateur précédemment NON VÉRIFIÉ.
+
+| Contrôle | Résultat constaté | Limite |
+|---|---|---|
+| tools/check.py | RÉUSSI, 9 pages | Motifs ciblés, pas un audit exhaustif |
+| tools/contrast.py | RÉUSSI, 9 paires au-dessus de 4,5:1 | Fonds/états non couverts |
+| 40 tests Python | RÉUSSIS | Données fictives |
+| tools/package_demo.py | 11 fichiers, paquet local non publié | Aucun hébergeur |
+| node tools/browser-check.cjs | **RÉUSSI**, code 0 (Chromium/Playwright préinstallés, aucun téléchargement) | Voir ci-dessous |
+
+Le test navigateur a vérifié sur les 9 pages, à 320, 375 et 1280 px : statut HTTP 200,
+un seul h1, bannière visible, aucun débordement horizontal, 0 erreur JavaScript ou
+console, 0 requête externe. À 375 px : premier Tab sur le lien d'évitement, menu
+ouvert à Entrée et fermé par Échap (aria-expanded), aucun champ ni bouton actif sur
+contact. Sans JavaScript : menu visible avec 7 liens.
+
+Restent NON VÉRIFIÉS : Firefox/Safari, appareils physiques, lecteur d'écran,
+validateur HTML W3C, rendu visuel inspecté par une personne, HTTPS/en-têtes d'un
+hébergeur réel, revue juridique. Aucune conformité ni sécurité absolue n'est affirmée.
