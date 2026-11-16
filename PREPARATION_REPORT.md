@@ -90,3 +90,23 @@ Test navigateur à nouveau tenté : **NON VÉRIFIÉ**, code 2, Chromium absent.
 Aucun téléchargement, achat, paiement, publication ou contact externe de test.
 La suite réussie ne valide ni la conformité juridique ni la sécurité exhaustive.
 Les observations de comptes et la configuration réelle demeurent hors dépôt public.
+
+
+## Troisième passe : test navigateur — 16 novembre 2026
+Référence : 611829f. Seul point incomplet repris : l'exécution du test navigateur.
+Aucune page ni outil modifié ; aucune seconde production du site.
+
+- `python3 tools/check.py` : RÉUSSI (9 pages, aucune anomalie dans le périmètre).
+- `python3 -m unittest discover -s tests` : **40 tests RÉUSSIS**.
+- `python3 tools/build.py` : régénération sans aucune différence versionnée.
+- `node tools/browser-check.cjs` (Node 22.23.4, Playwright 1.63.0, Chromium
+  pré-installé dans l'environnement, rien téléchargé) : **RÉUSSI, code 0**.
+  9 pages × 3 largeurs (320, 375, 1280 px) : statut 200, un seul h1, bannière
+  fictive visible, aucun débordement horizontal ; 0 erreur JS/console ;
+  0 requête externe ; clavier (lien d'évitement, menu Entrée/Échap,
+  `aria-expanded`) réussi ; formulaire entièrement désactivé ; sans JS, menu
+  visible avec 7 liens.
+
+Restent NON VÉRIFIÉS : lecteur d'écran, Firefox/Safari, appareils physiques,
+zoom, validation HTML W3C, HTTPS/en-têtes/hébergeur réel, revue juridique.
+Ce résultat ne vaut ni conformité juridique ni sécurité exhaustive.
