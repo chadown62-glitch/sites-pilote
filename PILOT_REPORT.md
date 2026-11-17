@@ -46,3 +46,25 @@ réexécutés dans l'environnement de relecture faute de Chromium installé.
 Les pages ont aussi été régénérées pour retirer les styles inline et préciser que
 l'hébergeur éventuel peut traiter des journaux techniques. Refaire les tests
 navigateur sur cette version avant toute utilisation réelle.
+
+
+## Reprise planifiée — 17 novembre 2026
+Référence : 611829fd2a67c11b395036493a0a51a3d23b78fc. Seul point incomplet constaté : le test navigateur de la
+version corrigée (NON VÉRIFIÉ jusqu'ici, Chromium absent). Site non reconstruit,
+aucun fichier du site modifié.
+- `python3 tools/check.py` : RÉUSSI (9 pages).
+- `python3 -m unittest discover -s tests -v` : 40 tests RÉUSSIS.
+- `node tools/browser-check.cjs` : **RÉUSSI**, code 0, avec le Chromium déjà
+  présent dans l'environnement (aucun téléchargement). 27 vérifications page×largeur
+  (9 pages × 320/375/1280 px) : statut 200, un h1, bannière visible, pas de
+  débordement horizontal ; 0 erreur JS/console ; 0 requête externe ; clavier
+  (lien d'évitement, menu Entrée/Échap, aria-expanded) réussi ; formulaire
+  entièrement désactivé ; navigation visible sans JavaScript (7 liens).
+- Captures d'écran inspectées visuellement (accueil 375/1280 px, contact 375 px,
+  mentions légales 1280 px) : rendu cohérent, bannière, avertissements et
+  formulaire désactivé lisibles. Captures non versionnées (fichiers temporaires).
+
+Restent NON VÉRIFIÉS : lecteur d'écran, Firefox/Safari, appareils physiques,
+validation HTML W3C, HTTPS/hébergeur réel, revue juridique. Aucune conformité
+juridique ni sécurité absolue n'est affirmée. Les conditions avant publication
+réelle ci-dessus restent inchangées.
