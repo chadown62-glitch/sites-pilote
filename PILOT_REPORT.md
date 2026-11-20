@@ -46,3 +46,8 @@ réexécutés dans l'environnement de relecture faute de Chromium installé.
 Les pages ont aussi été régénérées pour retirer les styles inline et préciser que
 l'hébergeur éventuel peut traiter des journaux techniques. Refaire les tests
 navigateur sur cette version avant toute utilisation réelle.
+
+## Mise à jour — 20 novembre 2026
+Test navigateur Chromium réexécuté sur la version actuelle : RÉUSSI (27 pages
+à 320/375/1280 px, 0 erreur JS, 0 requête externe, clavier, formulaire désactivé,
+navigation sans JS). Détails et limites restantes : PREPARATION_REPORT.md.
