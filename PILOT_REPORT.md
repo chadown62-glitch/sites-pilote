@@ -46,3 +46,11 @@ réexécutés dans l'environnement de relecture faute de Chromium installé.
 Les pages ont aussi été régénérées pour retirer les styles inline et préciser que
 l'hébergeur éventuel peut traiter des journaux techniques. Refaire les tests
 navigateur sur cette version avant toute utilisation réelle.
+
+## Addendum — 21 novembre 2026
+Test navigateur réexécuté sur la version régénérée (commit 611829f) avec Chromium
+déjà installé : RÉUSSI (9 pages × 320/375/1280 px, 0 erreur JS, 0 requête externe,
+clavier, formulaire désactivé, navigation sans JS). Contrôles statiques et 40 tests
+Python réussis ; régénération sans différence. Détail dans PREPARATION_REPORT.md.
+Restent non vérifiés : autres navigateurs, appareils réels, lecteur d'écran,
+validation W3C, revue juridique. Conditions avant publication inchangées.
