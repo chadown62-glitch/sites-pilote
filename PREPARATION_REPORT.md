@@ -90,3 +90,26 @@ Test navigateur à nouveau tenté : **NON VÉRIFIÉ**, code 2, Chromium absent.
 Aucun téléchargement, achat, paiement, publication ou contact externe de test.
 La suite réussie ne valide ni la conformité juridique ni la sécurité exhaustive.
 Les observations de comptes et la configuration réelle demeurent hors dépôt public.
+
+
+## Test navigateur exécuté — 22 novembre 2026
+Référence : 611829fd2a67c11b395036493a0a51a3d23b78fc. Aucune modification du site.
+Seul point incomplet : le test Chromium, NON VÉRIFIÉ lors des deux passes
+précédentes. Il est exécuté ici avec Chromium et Playwright déjà installés dans
+l'environnement (aucun téléchargement), via
+`NODE_PATH=$(npm root -g) node tools/browser-check.cjs` (Node 22).
+
+| Contrôle | Résultat constaté |
+|---|---|
+| `python3 tools/check.py` | RÉUSSI |
+| 40 tests Python | RÉUSSIS |
+| Régénération `tools/build.py` | Aucune différence avec les HTML versionnés |
+| 9 pages × 320/375/1280 px | Statut 200, un h1, bannière visible, aucun débordement horizontal |
+| Erreurs JS/console, requêtes externes | 0 / 0 |
+| Clavier (375 px) | Lien d'évitement au 1er Tab ; menu Entrée/Échap, aria-expanded correct |
+| Formulaire contact | Aucun champ ni bouton actif |
+| Sans JavaScript | Menu visible avec 7 liens |
+
+Limites inchangées : Chromium headless seulement ; pas de Firefox/Safari,
+d'appareil physique, de lecteur d'écran, de validation W3C ni de HTTPS réel.
+Aucune revue visuelle humaine ; aucune conformité juridique ni sécurité absolue.

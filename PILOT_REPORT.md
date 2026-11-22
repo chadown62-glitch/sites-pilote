@@ -46,3 +46,12 @@ réexécutés dans l'environnement de relecture faute de Chromium installé.
 Les pages ont aussi été régénérées pour retirer les styles inline et préciser que
 l'hébergeur éventuel peut traiter des journaux techniques. Refaire les tests
 navigateur sur cette version avant toute utilisation réelle.
+
+## Reprise — 22 novembre 2026
+Point incomplet repris : tests navigateur de la version corrigée. Exécutés avec
+`tools/browser-check.cjs` (Chromium headless déjà présent) : 27 chargements
+(9 pages × 320/375/1280 px) sans erreur JS, sans requête externe ni débordement ;
+clavier, formulaire désactivé et navigation sans JS RÉUSSIS. Contrôles statiques
+et 40 tests Python RÉUSSIS. Site non reconstruit. Détails et limites restantes
+dans PREPARATION_REPORT.md. Les autres contrôles non effectués listés plus haut
+(lecteurs d'écran, autres navigateurs, W3C, revue juridique) restent NON VÉRIFIÉS.
