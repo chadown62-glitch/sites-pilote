@@ -46,3 +46,15 @@ réexécutés dans l'environnement de relecture faute de Chromium installé.
 Les pages ont aussi été régénérées pour retirer les styles inline et préciser que
 l'hébergeur éventuel peut traiter des journaux techniques. Refaire les tests
 navigateur sur cette version avant toute utilisation réelle.
+
+
+## Reprise du 23 novembre 2026 — tests navigateur réexécutés
+Seul point incomplet : les tests navigateur sur la version régénérée. Chromium et
+Playwright étant disponibles, `node tools/browser-check.cjs` a été exécuté
+(code de sortie 0). Résultats constatés : 9 pages à 320, 375 et 1280 px ;
+0 requête externe ; 0 erreur JavaScript ; navigation clavier OK ; formulaire
+désactivé OK ; affichage sans JavaScript OK. Aussi : `python3 tools/check.py` OK
+et 40 tests unitaires réussis.
+Toujours NON VÉRIFIÉ : lecteur d'écran, Firefox/Safari/appareils réels, validateur
+W3C, HTTPS/hébergeur, revue juridique. Aucune conformité n'est affirmée.
+Le site n'est pas publiable tel quel ; les conditions ci-dessus restent valables.
