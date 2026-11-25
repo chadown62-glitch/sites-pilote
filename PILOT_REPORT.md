@@ -46,3 +46,11 @@ réexécutés dans l'environnement de relecture faute de Chromium installé.
 Les pages ont aussi été régénérées pour retirer les styles inline et préciser que
 l'hébergeur éventuel peut traiter des journaux techniques. Refaire les tests
 navigateur sur cette version avant toute utilisation réelle.
+
+
+## Mise à jour — 25 novembre 2026
+Les tests navigateur ont été réexécutés sur la version régénérée actuelle
+(`node tools/browser-check.cjs`, code 0) : 9 pages à 320/375/1280 px, 0 requête
+externe, 0 erreur JS, clavier, formulaire désactivé et sans-JS réussis. Le résultat
+« non réexécuté » de l'addendum précédent est ainsi levé pour Chromium uniquement.
+Restent non vérifiés : lecteur d'écran, Firefox/Safari, appareils, validateur W3C, revue juridique.
