@@ -46,3 +46,9 @@ réexécutés dans l'environnement de relecture faute de Chromium installé.
 Les pages ont aussi été régénérées pour retirer les styles inline et préciser que
 l'hébergeur éventuel peut traiter des journaux techniques. Refaire les tests
 navigateur sur cette version avant toute utilisation réelle.
+
+## Mise à jour — 27 novembre 2026
+Seul point incomplet traité : les tests navigateur sur la version régénérée ont été
+réexécutés (9 pages, 320/375/1280 px) : 0 erreur JS, 0 requête externe, clavier,
+formulaire désactivé et mode sans JS OK. Détails et limites : PREPARATION_REPORT.md.
+Aucune reconstruction du site. Les conditions avant publication réelle restent inchangées.

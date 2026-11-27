@@ -90,3 +90,12 @@ Test navigateur à nouveau tenté : **NON VÉRIFIÉ**, code 2, Chromium absent.
 Aucun téléchargement, achat, paiement, publication ou contact externe de test.
 La suite réussie ne valide ni la conformité juridique ni la sécurité exhaustive.
 Les observations de comptes et la configuration réelle demeurent hors dépôt public.
+
+
+## Test navigateur réexécuté — 27 novembre 2026
+`tools/browser-check.cjs` exécuté (Chromium + Playwright préinstallés, serveur local,
+aucun téléchargement) sur la version régénérée : 9 pages à 320, 375 et 1280 px ;
+0 requête externe, 0 erreur JavaScript, navigation clavier OK, formulaire désactivé OK,
+affichage sans JavaScript OK. Résultat constaté. Limites inchangées : Chromium
+seulement, pas de lecteur d'écran, pas de HTTPS/hébergeur réel, pas de revue juridique.
+Contrôles statiques et 40 tests Python toujours réussis.
