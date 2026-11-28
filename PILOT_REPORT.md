@@ -46,3 +46,11 @@ réexécutés dans l'environnement de relecture faute de Chromium installé.
 Les pages ont aussi été régénérées pour retirer les styles inline et préciser que
 l'hébergeur éventuel peut traiter des journaux techniques. Refaire les tests
 navigateur sur cette version avant toute utilisation réelle.
+
+
+## Mise à jour — 2026-11-28
+Le point incomplet de l'addendum est traité : les tests navigateur ont été refaits
+sur la version régénérée (Chromium, 320/375/1280 px, 9 pages) : 0 erreur JS, 0 requête
+externe, clavier, formulaire désactivé et mode sans JS réussis. `tools/check.py` OK,
+40 tests Python réussis. Restent NON VÉRIFIÉS : lecteur d'écran, Firefox/Safari,
+appareils physiques, validateur W3C. Les conditions avant publication réelle sont inchangées.
